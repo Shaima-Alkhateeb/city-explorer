@@ -6,6 +6,7 @@ import SearchForm from './components/SearchForm';
 import axios from 'axios';
 import DisplayData from './components/DisplayData';
 import ErrorComponent from './components/ErrorComponant';
+import Weather from './components/Weather';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +19,9 @@ class App extends React.Component {
       //Dont display the data if we dont have a city name(flag)
       displayInfo: false,
       errorMsg: '',
-      displayError: false
+      displayError: false,
+      weather: [],
+      isWeather: false
     }
   }
 
@@ -30,8 +33,6 @@ class App extends React.Component {
     const searchQuery = e.target.searchQuery.value;
     const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${searchQuery}&format=json`;
     // console.log(url);
-
-
 
     try {
       //Put all the axios data inside variable(city: will hold all the city data)
@@ -50,6 +51,7 @@ class App extends React.Component {
 
       // console.log(this.state)
       this.displayMap(city.data[0].lat, city.data[0].lon);
+      this.displyWeather(searchQuery, city.data[0].lat, city.data[0].lon)
 
     } catch (error) {
       console.log(error)
@@ -69,7 +71,25 @@ class App extends React.Component {
     this.setState({
       map_src: showMap
     })
+  }
 
+  //dealing with the backend side
+  displyWeather = async(searchQuery, lat, lon) => {
+    try {
+      const weatherData = await axios.get(`https://city-explor-api.herokuapp.com/weather?searchQuery=${searchQuery}&lat=${lat}&lon=${lon}`)
+      this.setState({
+        isWeather: true,
+        weather: weatherData.data
+      })
+
+    } catch (error) {
+      this.setState({
+        isWeather: false,
+        errorMsg: error.response.state + ' : ' + error.response.data.error,
+        displayError: true,
+        displayInfo: false
+      })
+    }
   }
 
   render () {
@@ -80,6 +100,11 @@ class App extends React.Component {
         {this.state.displayInfo && 
           <DisplayData cityInfo={this.state} mapSource={this.state.map_src} />
         } 
+
+        {this.state.isWeather &&
+          <Weather weatherInfrmation={this.state.weather} />
+
+        }
 
         {this.state.displayError && 
           <ErrorComponent error={this.state.errorMsg} />

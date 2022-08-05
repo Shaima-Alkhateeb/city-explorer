@@ -1,6 +1,7 @@
 import React from "react";
 import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class ErrorComponent extends React.Component {
     render() {
