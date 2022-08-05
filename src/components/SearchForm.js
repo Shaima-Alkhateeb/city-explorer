@@ -6,14 +6,15 @@ class SearchForm extends React.Component {
     render() {
         return(
             <>
-            <h1>City Explore </h1>
+            <h1>City Explore 🌏 </h1>
             <Form onSubmit={this.props.submitHandler}>
                 <Form.Label id='searchQuery'></Form.Label>
-                <Form.Control type="text" id='searchQuery' placeholder="Enter the city" /><br/>
+                <Form.Control type="text" id='searchQuery' placeholder="Enter the city..." /><br/>
 
                 <Button variant="primary" type="submit">
                   Explore!
                 </Button>
+
             </Form>
             </>
         )
