@@ -25,7 +25,7 @@ Draw it with Qais Alsghe and Bayan Aljawawde
 
 ## Time Estimates
 
-Name of feature: Asynchronous code, and APIs
+### Name of feature: Asynchronous code, and APIs
 
 Estimate of time needed to complete: 6 hours
 
@@ -33,4 +33,8 @@ Start time: 3:00 pm
 
 Finish time: on the next day
 
+
+
+
 Actual time needed to complete: 12 hours ++
+
