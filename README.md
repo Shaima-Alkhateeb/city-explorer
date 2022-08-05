@@ -17,6 +17,12 @@
 
 ----
 
+## The Web Request-Response Cycle (WRRC)
+
+Draw it with Qais Alsghe and Bayan Aljawawde
+
+![data-flow](./img/data-flow.jpg)
+
 ## Time Estimates
 
 ### Name of feature: Asynchronous code, and APIs
@@ -25,6 +31,10 @@ Estimate of time needed to complete: 6 hours
 
 Start time: 3:00 pm
 
-Finish time: _____
+Finish time: on the next day
 
-Actual time needed to complete: _____
+
+
+
+Actual time needed to complete: 12 hours ++
+
