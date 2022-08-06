@@ -33,8 +33,22 @@ Start time: 3:00 pm
 
 Finish time: on the next day
 
-
-
-
 Actual time needed to complete: 12 hours ++
 
+----
+
+## The Web Request-Response Cycle
+
+![data-flow](./img/data-flow-day09.png)
+
+## Time Estimates lab 09
+
+### Name of feature: Refactoring into Modules
+
+Estimate of time needed to complete: 3 hours
+
+Start time: 6:00 pm
+
+Finish time: 8:00 pm
+
+Actual time needed to complete: 2 hours, but not from the first
