@@ -5,12 +5,6 @@ class Weather extends React.Component {
     render() {
         return(
             <>
-            {/* {this.props.weatherInfrmation.map(item => 
-                <li>{item.date} : {item.descriptioin}</li>
-            )} */}
-
-
-
             <Card style={{ width: '30rem' }}  >
               {/* <Card.Img variant="top" src={this.props.mapSource} /> */}
               <Card.Body>
