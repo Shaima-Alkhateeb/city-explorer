@@ -1,5 +1,6 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
+import WeatherDay from "./WeatherDay"
 
 class Weather extends React.Component {
     render() {
@@ -11,7 +12,7 @@ class Weather extends React.Component {
                 <Card.Title>The Date📆 : The Weather ☀️🌧️ </Card.Title>
                  <Card.Text> 
                     {this.props.weatherInfrmation.map(item => 
-                        <div>{item.date} : {item.descriptioin}</div>
+                        <WeatherDay singleDay={item} />
                     )}
                 </Card.Text>
               </Card.Body>
