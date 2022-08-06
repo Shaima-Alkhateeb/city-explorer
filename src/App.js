@@ -7,6 +7,7 @@ import axios from 'axios';
 import DisplayData from './components/DisplayData';
 import ErrorComponent from './components/ErrorComponant';
 import Weather from './components/Weather';
+import Movies from './components/Movies';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +22,9 @@ class App extends React.Component {
       errorMsg: '',
       displayError: false,
       weather: [],
-      isWeather: false
+      isWeather: false,
+      movies: [],
+      isMovie: false
     }
   }
 
@@ -52,6 +55,7 @@ class App extends React.Component {
       // console.log(this.state)
       this.displayMap(city.data[0].lat, city.data[0].lon);
       this.displyWeather(searchQuery, city.data[0].lat, city.data[0].lon)
+      this.displayMovie(searchQuery)
 
     } catch (error) {
       console.log(error)
@@ -92,6 +96,26 @@ class App extends React.Component {
     }
   }
 
+
+  displayMovie = async(searchQuery) => {
+    console.log(searchQuery)
+    try {
+      const movieData = await axios.get(`https://city-explor-api.herokuapp.com/movies?searchQuery=${searchQuery}`)
+      
+      this.setState({
+        movies: movieData.data,
+        isMovie: true
+      })
+
+    } catch(error) {
+      this.setState({
+
+        isMovie: false
+
+      })
+    }
+  }
+
   render () {
     return (
       <div className="App">
@@ -103,8 +127,14 @@ class App extends React.Component {
 
         {this.state.isWeather &&
           <Weather weatherInfrmation={this.state.weather} />
-
         }
+
+        {this.state.isMovie &&
+          <Movies movie={this.state.movies} />
+          
+        }
+        
+        {console.log(this.state.movies)}
 
         {this.state.displayError && 
           <ErrorComponent error={this.state.errorMsg} />
